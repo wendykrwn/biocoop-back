@@ -13,6 +13,13 @@ router.get("/api", async (req, res) => {
 })
 
 router.get("/coco", async (req, res) => {
+  pool.query("SELECT * FROM users", (err, res) => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    console.log(res.rows)
+  })
   res.send("Coucou")
 })
 
@@ -35,5 +42,6 @@ router.put("/api/profile", async (req, res) => {
   // Mettre à jour le profil de l'utilisateur
   res.send("Profile Put")
 })
+
 
 module.exports = router
